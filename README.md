@@ -1,4 +1,4 @@
-# T5 Encoder only extension for Transformers
+# T5 Encoder-only extension for Transformers
 This repository contains the implementation of `T5ForSequenceClassification` and `T5ForTokenClassification` fully compatible with [Transformers](https://github.com/huggingface/transformers) library. While this could be a feature from the library itself is not implemented yet, so this repository contains the code for preliminary experiments before being actually included to the library.
 
 This implementation is inspired by [EncT5: A Framework for Fine-tuning T5 as Non-autoregressive Models](https://arxiv.org/abs/2110.08426) and [A Universal Discriminator for Zero-Shot Generalization](https://arxiv.org/pdf/2211.08099.pdf) that made use of T5 encoder only.
