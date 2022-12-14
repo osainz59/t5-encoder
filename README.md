@@ -6,7 +6,7 @@ This implementation is inspired by [EncT5: A Framework for Fine-tuning T5 as Non
 ## Installation and use
 You can simply install this library by running the following command:
 ```bash
-python -m pip install git+https://github.com/osainz59/t5-encoders
+python -m pip install git+https://github.com/osainz59/t5-encoder
 ```
 To use the implemented classes you have to simply import `t5_encoders` along with transformers. Example:
 ```python

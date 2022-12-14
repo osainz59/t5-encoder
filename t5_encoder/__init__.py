@@ -23,6 +23,8 @@ from transformers.models import t5
 setattr(t5, "T5ForTokenClassification", T5ForTokenClassification)
 setattr(t5, "T5ForSequenceClassification", T5ForSequenceClassification)
 
+__version__ = "0.1"
+
 __all__ = [
     "T5ForTokenClassification",
     "T5ForSequenceClassification"
