@@ -148,7 +148,7 @@ class T5ForTokenClassification(T5PreTrainedModel):
             loss=loss,
             logits=logits,
             hidden_states=outputs.hidden_states,
-            attentions=output.attentions
+            attentions=outputs.attentions
         )
 
 @add_start_docstrings(
