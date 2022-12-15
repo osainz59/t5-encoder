@@ -24,9 +24,16 @@ print(outputs.logits)
 ## GLUE results
 
 | Model | CoLA | SST2 | MRPC | STSb | QQP | MNLI | QNLI | RTE | WNLI |
-|:------|------|:-----|:-----|:-----|:----|:-----|:-----|:----|:-----|
+|:------|:------|:-----|:-----|:-----|:----|:-----|:-----|:----|:-----|
 | RoBERTa<sub>large</sub>  | **68.0** | **96.4** | 90.9 | 92.4 | **92.2** | 90.2/90.2 | 94.7 | 86.6 | **91.3** |
 | T5<sub>large</sub> | 61.2 | 96.3 | 92.4 | 89.9 | 89.9 | 89.9/89.6 | **94.8** | 87.2 | 85.6 | 
 | T5-Enc<sub>large</sub> | 55.0 | 96.1 | **93.3** | **92.7** | 91.4 | **90.5/90.4** | 94.7 | **88.8** | 47.9 |
+
+## NER results
+| Model | CoNLL-2003 (F1) |
+|:------|:------|
+|[RoBERTa](https://huggingface.co/Gladiator/roberta-large_ner_conll2003)<sub>large</sub> | 96.57 |
+| T5 | - |
+| T5-Enc<sub>large</sub> | 95.49 |
 
 **Important:** Those results are obtained by a single run, for those datasets with very few examples the performance might change drastically.
