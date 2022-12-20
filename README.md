@@ -8,9 +8,9 @@ You can simply install this library by running the following command:
 ```bash
 python -m pip install git+https://github.com/osainz59/t5-encoder
 ```
-To use the implemented classes you have to simply import `t5_encoders` along with transformers. Example:
+To use the implemented classes you have to simply import `t5_encoder` along with transformers. Example:
 ```python
-import t5_encoders
+import t5_encoder
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 tokenizer = AutoTokenizer.from_pretrained("google/t5-v1_1-base")
