@@ -24,6 +24,8 @@ from transformers.utils import (
     replace_return_docstrings
 )
 from transformers.utils.model_parallel_utils import assert_device_map, get_device_map
+from transformers.utils.logging import get_logger
+logger = get_logger("transformers")
 
 @add_start_docstrings(
     """T5 Model with a token classification head on top (a linear layer on top of the hidden-states output) e.g. for
@@ -262,6 +264,8 @@ class T5ForSequenceClassification(T5PreTrainedModel):
         # Calculate the sum of non-padding tokens and subtract 1
         sums = (input_ids != self.config.pad_token_id).sum(dim=-1) - 1
         # Replace negative indices with 0
+        if sums < 0:
+            logger.warning("Found a sequence of input_ids == all pad_token_ids. Make sure that you've correctly tokenized the input text.")
         sums = torch.where(sums < 0, torch.zeros_like(sums), sums)
         last_hidden_indices = sums.unsqueeze(dim=-1).repeat(1, outputs[0].size(-1)).unsqueeze(1)
         sequence_output = outputs[0].gather(dim=1, index=last_hidden_indices).squeeze(1)
