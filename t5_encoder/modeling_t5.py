@@ -259,9 +259,11 @@ class T5ForSequenceClassification(T5PreTrainedModel):
 
         # Get last hidden indices
         # (batch_size) -> (batch_size, 1) -> (batch_size, hidden_size) -> (batch_size, 1, hidden_size)
-        last_hidden_indices = (
-            (input_ids != self.config.pad_token_id).sum(dim=-1) - 1
-        ).unsqueeze(dim=-1).repeat(1, outputs[0].size(-1)).unsqueeze(1) 
+        # Calculate the sum of non-padding tokens and subtract 1
+        sums = (input_ids != self.config.pad_token_id).sum(dim=-1) - 1
+        # Replace negative indices with 0
+        sums = torch.where(sums < 0, torch.zeros_like(sums), sums)
+        last_hidden_indices = sums.unsqueeze(dim=-1).repeat(1, outputs[0].size(-1)).unsqueeze(1)
         sequence_output = outputs[0].gather(dim=1, index=last_hidden_indices).squeeze(1)
 
         sequence_output = self.dropout(sequence_output)
